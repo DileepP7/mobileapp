@@ -1,0 +1,292 @@
+<!DOCTYPE html> 
+<html> <head> 
+<meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <link rel="stylesheet" href="jquery.mobile.css" />
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="jquery.js"></script>
+  <script src="jquery.mobile.js"></script>
+  <script src="vehicleLogs.js"></script>
+</head>
+<body> 
+<div data-role="page" id="Home" class="ui-page">
+	<div data-role="header" class="ui-bar">
+         <h2 style="text-align:center"> Vehicle Logs </h2>
+	</div>
+	<div data-role="main" class="ui-content">
+		<ul data-role="listview" id="mainMenu">
+		  <li><a class="vehicleId" href="#" data-transition="slide" data-vehicleId="1">Car</a></li>
+		  <li><a class="vehicleId" href="#vehicle" data-transition="slide" data-vehicleId="2">5T Truck</a></li>
+		  <li><a class="vehicleId" href="#" data-transition="slide" data-vehicleId="3">10T Truck</a></li>
+		  <li><a class="vehicleId" href="#" data-transition="slide" data-vehicleId="4">Tipper</a></li>
+		  <li><a class="vehicleId" href="#" data-transition="slide" data-vehicleId="5">Articulated</a></li>
+		</ul>
+	</div>
+	<div data-role="footer" class="ui-bar">
+           CQUniversity, R. Balsys. 2017.
+	</div>
+</div> 
+<div data-role="page" id="vehicle" class="ui-page">
+	<div data-role="header">
+	  <a>Clear</a>
+	  <h1 id="vehicleType"></h1>
+	  <a>Show Logs</a>
+	</div>
+	
+	<div data-role="main" class="ui-content">
+		<form method="post" action="#">
+		  <label for="Dname">Driver:</label>
+		  <input type="text" name="Dname" id="Dname" placeholder="Your name">
+		  <label for="Rego">Rego #</label>
+		  <input type="text" name="Rego" id="Rego" placeholder="000-XXX">
+		</form>
+	</div>
+	<div >
+	 <input type="button" id="start" value="Start Time" onclick="populateTest(lat,lng);">
+	 <input type="button" id="first" value="First Break">
+	 <input type="button" id="second" value="Second Break">
+	 <input type="button" id="end" value="End Time">
+	 <input type="button" value="Save Log Entry">
+	</div>
+  
+
+	<div data-role="footer" class="ui-bar">
+	<div data-role="controlgroup" data-type="horizontal">
+    <a href="" data-role="button" data-icon="arrow-r" id="goNext">Next</a>
+    <a href="" data-role="button" data-icon= 	"arrow-l" data-direction="reverse" id="goBack">Previous</a>
+    <a href="mob.html" data-role="button" data-icon="home" data-direction="fade">Home</a>
+
+    </div> </div>  </div> 
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------------------------->
+<section data-transition="pop" id="msgbox" data-role="dialog">
+<header id="msgboxheader" data-role="header" data-position="fixed">
+<h1>Confirm</h1>
+</header>
+<div id="msgboxcontent" data-role="content" class="content">
+<div id="msgboxtitle">
+</div>
+<br><div id="msgboxprompt">
+<p>Are you sure you want to delete this record?</p>
+</div>
+<br><div style="text-align: center;" id="msgboxbuttons" class="ui-grid-a">
+<div class="ui-block-a">
+<a data-method="" data-id="" data-topage="" id="msgboxyes" data-role="button" data-icon="check">Yes</a>
+</div>
+<div class="ui-block-b">
+<a data-method="" data-id="" data-topage="" id="msgboxno" data-role="button" data-icon="delete" data-theme="b">No</a>
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div id="list" data-role="page"> 
+   <div data-role="header" data-position="fixed">
+    <h1>List Example</h1>
+   </div> 
+   <div data-role="content">
+  <ul data-role="listview”>   
+  <li><a href="#content">Content Example</a></li>
+  <li><a href="#button">Button Example</a></li>
+  <li><a href="#form">Form Example</a></li>
+  </ul>
+  </div> 
+</div>
+<div id="content" data-role="page"> 
+<div data-role="page" id="home"> 
+ <div data-role="header" > 
+  <img src=”cqulogo.jpg”  width = "100%" height = "70 px"/>
+  <h1>Mobile Computing</h1> </div> 
+ <div data-role="content">
+ <ul data-role="listview">
+ <li><a href="#week1">Week 1: Introduction</a></li>    
+ <li><a href="#week2">Week 2: DOM and MVC</a></li>
+ </ul> </div>
+<div data-role="footer" class="ui-bar">
+          &copy; CQUniversity, R. Balsys. 2011.
+</div> </div>
+
+<div data-role="collapsible">
+   <h3>I'm the header</h3>
+   <p>I'm the content. By default I'm open and    	displayed, but you can click the header to hide              
+     me.</p> </div>
+
+    <div data-role="header" data-position="fixed">
+    <h1>Content Example</h1>
+    </div> 
+    <div data-role="content">
+    <h1>Heading</h1>
+    <h2>Sub Heading</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur … </p>
+      <div data-role="collapsible">
+      <h1>Collapsible</h1>
+      <p>Sed do eiusmod tempor incididunt ut labore… </p>
+       </div>
+    <h3>Inset List</h3>
+    <ul data-role="listview" data-inset="true">
+    <li>Row One</li>
+    <li>Row Two</li>
+    <li>Row Three</li>
+    </ul>
+    <h3>Columns</h3>
+    <div class="ui-grid-a">
+        <div class="ui-block-a">
+        Ut enim ad minim veniam, quis nostrud …
+        </div>
+    <div class="ui-block-b">
+        Excepteur sint occaecat cupidatat non proident ...</p>
+    </div>
+</div> </div>  </div> 
+<div id="button" data-role="page"> 
+  <div data-role="header" data-position="fixed">
+      <h1>Button Example</h1>
+  </div> 
+  <div data-role="content">
+    <a href="#list" data-role="button">Link</a>
+    <a href="#list" data-role="button" data-icon = 
+						"star">Icon</a>
+    <a href="#list" data-role="button" data-inline= 
+						"true">Small</a>
+    <div data-inline="true">
+        <a href="#list" data-role="button" data-inline=
+						"true">Same</a>
+	<a href="#list" data-role="button" data-inline= 
+						"true”>Line</a>
+    </div>
+    <div data-role="controlgroup" data-type="horizontal">
+      <a href="#list" data-role="button">Yes</a>
+      <a href="#list" data-role="button">No</a>
+      <a href="#list" data-role="button">Maybe</a>
+    </div> </div>  </div> 
+<div id="form" data-role="page"> 
+    <div data-role="header" data-position="fixed">
+    <h1>Form Example</h1>  </div> 
+<div data-role="content">
+    <div data-role="fieldcontain">
+    <label for="input">Input:</label>
+    <input type="text" id="input" placeholder="input" />
+    <label for="textarea">Textarea:</label>
+    <textarea rows="4" id="textarea"></textarea>
+    <label for="slider">Slider:</label>
+    <input type="range" id="slider" value="0" min="0" max="100”/>
+        <div data-inline="true">
+        <label for="toggle">Toggle:</label>
+        <select id="toggle" data-role="slider">
+	  <option value="off">Off</option>
+	  <option value="on">On</option>
+        </select> 
+        </div>
+   <label for="select">Select:</label>
+   <select id="select">
+   <option>Option One</option>
+   <option>Option Two</option>
+   <option>Option Three</option>
+   </select>
+   </div>   </div>  </div> 
+</body>  </html>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+/*
+$('#truc').click( function() {
+    document.getElementById("test").innerHTML = localStorage.getItem("firstname");
+	console.log("test");
+	});
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("lastname", "Smith");
+    localStorage.setItem("firstname", "thapa");
+    // Retrieve
+    document.getElementById("test").innerHTML = localStorage.getItem("firstname");
+} else {
+    document.getElementById("test").innerHTML = "Sorry, your browser does not support Web Storage...";
+}  */
+<!DOCTYPE html> 
+<html> <head> 
+<title>To Do App</title> 
+<meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" /> 
+<link rel="stylesheet" href="jquery.mobile.css" />
+<link rel="stylesheet" href="todo.css" />
+  <script src="jquery.js"></script>
+  <script src="jquery.mobile.js"></script>
+  <script src="todo.js"></script>
+</head> 
+<body> 
+<div id="main" data-role="page”>
+  <div data-role="header" data-position="fixed">
+    <h1>To Do List</h1>
+    <a id="add" href="#" data-icon="plus“
+				 class="ui-btn-right">Add</a>
+    <a id="cancel" href="#" data-icon="delete" 
+				class="ui-btn-right">Cancel</a>
+  </div>
+<div data-role="content">	
+    <div id="newitem">
+      <input type="text" id="text" 
+		placeholder="Enter To Do item"/>
+      <a id="save" href="#" data-role="button" 
+		data-inline="true" data-icon='plus'>Save</a>
+    </div>	
+    <ul id="todolist" data-role="listview“> 
+      <li>
+      <span class= “check“  >&#10003;</span>
+      <span class=“text“ >Test item</span>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
+-->
